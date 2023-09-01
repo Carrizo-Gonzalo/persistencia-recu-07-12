@@ -2,7 +2,15 @@ package utn.dds.persistencia.futbol.persistence.difusion;
 
 import utn.dds.persistencia.futbol.persistence.Partido;
 
-public class PagarParaVer implements Difusion {
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("PPV")
+public class PagarParaVer extends Difusion {
+
+  private String membresiaMinimaNecesaria;
+  private String distribuidor;
 
   @Override
   public void iniciarDifusion(Partido partido) {

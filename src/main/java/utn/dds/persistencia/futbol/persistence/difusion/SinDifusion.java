@@ -2,7 +2,12 @@ package utn.dds.persistencia.futbol.persistence.difusion;
 
 import utn.dds.persistencia.futbol.persistence.Partido;
 
-public class SinDifusion implements Difusion {
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("SD")
+public class SinDifusion extends Difusion {
 
   @Override
   public void iniciarDifusion(Partido partido) {

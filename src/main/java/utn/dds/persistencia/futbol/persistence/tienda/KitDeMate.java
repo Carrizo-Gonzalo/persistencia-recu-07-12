@@ -1,8 +1,14 @@
 package utn.dds.persistencia.futbol.persistence.tienda;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "kits_de_mates")
 public class KitDeMate extends Producto {
 
+  @Enumerated
   private Material material;
+  @Column(name = "funda")
   private boolean incluyeFunda;
 
   public Material getMaterial() {

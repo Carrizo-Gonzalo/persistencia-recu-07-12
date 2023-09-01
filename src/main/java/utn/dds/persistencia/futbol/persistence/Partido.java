@@ -3,18 +3,21 @@ package utn.dds.persistencia.futbol.persistence;
 import utn.dds.persistencia.futbol.persistence.difusion.Difusion;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 @Entity
+@Table(name = "partidos")
 public class Partido implements Competitivo {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private Calendar fecha;
+  private LocalDate fecha;
+  @Column(name = "espectadores")
   private Integer cantidadEspectadores;
 
   @ManyToOne
@@ -23,17 +26,18 @@ public class Partido implements Competitivo {
   private Formacion visitante;
 
   @ManyToMany
-  @OrderColumn(name = "posicion")
+  @JoinTable(name = "goleadores")
+  @OrderColumn(name = "ranking")
   private List<Jugador> goleadores = new ArrayList<>();
 
-  @Transient
+  @OneToOne
   private Difusion difusion;
 
-  public Calendar getFecha() {
+  public LocalDate getFecha() {
     return fecha;
   }
 
-  public void setFecha(Calendar fecha) {
+  public void setFecha(LocalDate fecha) {
     this.fecha = fecha;
   }
 

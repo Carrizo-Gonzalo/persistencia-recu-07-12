@@ -3,12 +3,14 @@ package utn.dds.persistencia.futbol.persistence;
 import utn.dds.persistencia.futbol.persistence.auditoria.Auditable;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(name = "formaciones")
 public class Formacion implements Auditable {
 
   @Id
@@ -21,9 +23,11 @@ public class Formacion implements Auditable {
   private Equipo equipo;
 
   @ManyToMany
-  private Collection<Jugador> jugadores = new ArrayList<Jugador>();
+  @JoinTable(name = "miembros")
+  private List<Jugador> jugadores = new ArrayList<Jugador>();
 
-  private Date ultimaModificacion;
+  @Column(name = "ultima_modificacion")
+  private LocalDate ultimaModificacion;
 
   public Equipo getEquipo() {
     return equipo;
@@ -54,7 +58,7 @@ public class Formacion implements Auditable {
   }
 
   @Override
-  public Date getUltimaModificacion() {
+  public LocalDate getUltimaModificacion() {
     return ultimaModificacion;
   }
 

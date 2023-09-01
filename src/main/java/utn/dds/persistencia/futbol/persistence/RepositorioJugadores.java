@@ -11,17 +11,16 @@ public class RepositorioJugadores implements WithSimplePersistenceUnit {
     entityManager().persist(jugador);
   }
 
-  @SuppressWarnings("unchecked")
+
   public List<Jugador> todos() {
     return entityManager()
-        .createQuery("from Jugador")
+        .createQuery("from Jugador", Jugador.class)
         .getResultList();
   }
 
-  @SuppressWarnings("unchecked")
   public List<Jugador> filtrarPorNombre(String nombre) {
     return entityManager()
-        .createQuery("from Jugador where nombre = :nombre")
+        .createQuery("from Jugador where nombre = :nombre", Jugador.class)
         .setParameter("nombre", nombre)
         .getResultList();
   }

@@ -1,19 +1,21 @@
 package utn.dds.persistencia.futbol.persistence;
 
+import javax.persistence.Embeddable;
+import java.time.LocalDate;
 import java.util.Date;
 
+@Embeddable
 public class Lesion {
 
-  private Date fecha;
+  private LocalDate fecha;
   private String descripción;
 
-
-  public Lesion(Date fecha, String descripción) {
+  public Lesion(LocalDate fecha, String descripción) {
     this.fecha = fecha;
     this.descripción = descripción;
   }
 
-  public Date getFecha() {
+  public LocalDate getFecha() {
     return fecha;
   }
 

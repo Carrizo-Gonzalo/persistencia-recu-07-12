@@ -3,11 +3,13 @@ package utn.dds.persistencia.futbol.persistence;
 import utn.dds.persistencia.futbol.persistence.auditoria.Auditable;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(name = "jugadores")
 public class Jugador implements Auditable {
 
   @Id
@@ -17,15 +19,21 @@ public class Jugador implements Auditable {
   private String nombre;
   private String posicion;
 
-  private Date ultimaModificacion;
+  @Column(name = "ultima_modificacion")
+  private LocalDate ultimaModificacion;
 
   public String getNombre() {
     return nombre;
   }
 
   @ElementCollection
-  @Column(name = "description")
-  private List<String> lesiones = new ArrayList<>();
+  @Column(name = "frase")
+  @CollectionTable(name = "frases_celebres")
+  private List<String> frasesCelebres = new ArrayList<>();
+
+  @ElementCollection
+  @CollectionTable(name = "lesiones")
+  private List<Lesion> lesiones = new ArrayList<>();
 
   public void setNombre(String nombre) {
     this.nombre = nombre;
@@ -43,9 +51,8 @@ public class Jugador implements Auditable {
     return id;
   }
 
-
   @Override
-  public Date getUltimaModificacion() {
+  public LocalDate getUltimaModificacion() {
     return ultimaModificacion;
   }
 
