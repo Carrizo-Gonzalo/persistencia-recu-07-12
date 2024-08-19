@@ -1,10 +1,11 @@
 package utn.dds.persistencia.futbol.persistence;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
 
 public class Partido {
 
-	private Calendar fecha;
+	private LocalDateTime fecha;
 	private Integer cantidadEspectadores;
 
 	private Formacion local;

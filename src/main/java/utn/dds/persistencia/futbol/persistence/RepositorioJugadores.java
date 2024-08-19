@@ -11,6 +11,10 @@ public class RepositorioJugadores implements WithSimplePersistenceUnit {
     entityManager().persist(jugador);
   }
 
+  public Jugador buscar(long id) {
+    return entityManager().find(Jugador.class, id);
+  }
+
   @SuppressWarnings("unchecked")
   public List<Jugador> todos() {
     return entityManager()

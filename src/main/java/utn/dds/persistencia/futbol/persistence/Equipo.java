@@ -1,7 +1,14 @@
 package utn.dds.persistencia.futbol.persistence;
 
+import javax.persistence.*;
+
+@Entity
 public class Equipo {
-  
+
+	@Id
+	@GeneratedValue
+	private Long id;
+
 	private String nombre;
 	private Long cantidadAfiliados;
 
@@ -21,4 +28,7 @@ public class Equipo {
 		this.cantidadAfiliados = cantidadAfiliados;
 	}
 
+	public Long getId() {
+		return id;
+	}
 }
