@@ -72,5 +72,19 @@ public class ContextTest implements SimplePersistenceTest {
     assertNotNull(
         entityManager().find(Equipo.class, equipo.getId())
     );
+    assertEquals(
+        equipo.getId(),
+        entityManager().find(Equipo.class, equipo.getId()).getId()
+    );
+    // si implementamos equals
+    assertEquals(
+        equipo,
+        entityManager().find(Equipo.class, equipo.getId())
+    );
+    // esto NO siempre será cierto, :(
+    assertSame(
+        equipo,
+        entityManager().find(Equipo.class, equipo.getId())
+    );
   }
 }

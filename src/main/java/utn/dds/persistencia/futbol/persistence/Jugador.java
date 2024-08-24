@@ -1,5 +1,6 @@
 package utn.dds.persistencia.futbol.persistence;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,7 +12,10 @@ public class Jugador {
 	@GeneratedValue
 	private Long id;
 
+	@Column
 	private String nombre;
+
+	@Column
 	private String posicion;
 
 	public String getNombre() {
