@@ -1,9 +1,15 @@
 package utn.dds.persistencia.futbol.persistence;
 
+import java.util.List;
+
 public class Jugador {
-	
+
 	private String nombre;
 	private String posicion;
+
+	// los partidos en que recibió el premio
+	// a "la figura del partido"
+	private List<Partido> mejoresPartidos;
 
 	public String getNombre() {
 		return nombre;
