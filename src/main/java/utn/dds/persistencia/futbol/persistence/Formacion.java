@@ -7,40 +7,40 @@ import java.util.List;
 @Entity
 public class Formacion {
 
-		@Id
-	@GeneratedValue
-	private Long id;
+  @Id
+  @GeneratedValue
+  private Long id;
 
-	private Long goles;
+  private Long goles;
 
-	@ManyToOne
-	private Equipo equipo;
+  @ManyToOne
+  private Equipo equipo;
 
-	@ManyToMany
-	private List<Jugador> jugadores = new ArrayList<Jugador>();
+  @ManyToMany
+  private List<Jugador> jugadores = new ArrayList<Jugador>();
 
-	public Equipo getEquipo() {
-		return equipo;
-	}
+  public Equipo getEquipo() {
+    return equipo;
+  }
 
-	public void setEquipo(Equipo equipo) {
-		this.equipo = equipo;
-	}
+  public void setEquipo(Equipo equipo) {
+    this.equipo = equipo;
+  }
 
-	public List<Jugador> getJugadores() {
-		return jugadores;
-	}
+  public List<Jugador> getJugadores() {
+    return jugadores;
+  }
 
-	public void setJugadores(List<Jugador> jugadores) {
-		this.jugadores = jugadores;
-	}
+  public void setJugadores(List<Jugador> jugadores) {
+    this.jugadores = jugadores;
+  }
 
-	public Long getGoles() {
-		return goles;
-	}
+  public Long getGoles() {
+    return goles;
+  }
 
-	public void setGoles(Long goles) {
-		this.goles = goles;
-	}
+  public void setGoles(Long goles) {
+    this.goles = goles;
+  }
 
 }
